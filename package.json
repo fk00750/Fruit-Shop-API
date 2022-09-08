@@ -1,0 +1,31 @@
+{
+  "name": "fruit-shop-api",
+  "version": "1.0.0",
+  "description": "Rest API for fruit shop website",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon ./server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fk00750/Fruit-Shop-API.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fk00750/Fruit-Shop-API/issues"
+  },
+  "homepage": "https://github.com/fk00750/Fruit-Shop-API#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "joi": "^17.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.5.4"
+  }
+}
