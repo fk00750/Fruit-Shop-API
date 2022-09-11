@@ -3,6 +3,9 @@ const User = require("../../models/user");
 const bcrypt = require("bcryptjs");
 const { wrongCredentials } = require("../../utils/CustomErrorHandler");
 const JwtService = require("../../utils/JwtService");
+const RefreshToken = require("../../models/refreshToken");
+const REFRESH_SECRET = process.env.REFRESH_SECRET;
+
 
 const login = async (req, res, next) => {
   // Login Schema
@@ -24,7 +27,6 @@ const login = async (req, res, next) => {
     const user = await User.findOne({ email: req.body.email });
 
     if (!user) {
-      console.log('user');
       return next(wrongCredentials());
     }
 
@@ -37,8 +39,16 @@ const login = async (req, res, next) => {
 
     // token
     const access_token = JwtService.sign({ id: user._id, role: user.role });
+    const refresh_token = JwtService.sign(
+      { id: user._id, role: user.role },
+      "1y",
+      REFRESH_SECRET
+    );
 
-    res.json({ access_token });
+    // database whitelist for refresh token
+    await RefreshToken.create({ token: refresh_token });
+
+    res.json({ access_token, refresh_token });
   } catch (error) {
     return next(error);
   }

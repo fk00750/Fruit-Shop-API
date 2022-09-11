@@ -2,8 +2,9 @@ const Joi = require("joi");
 const UserModel = require("../../models/user");
 const CustomErrorHandler = require("../../utils/CustomErrorHandler");
 const bcrypt = require("bcryptjs");
-const JWT = require("jsonwebtoken");
+const RefreshToken = require("../../models/refreshToken");
 const JwtService = require("../../utils/JwtService");
+const REFRESH_SECRET = process.env.REFRESH_SECRET;
 
 const register = async (req, res, next) => {
   // Register schema
@@ -48,6 +49,7 @@ const register = async (req, res, next) => {
     password: hashedPassword,
   });
 
+  let refresh_token;
   let access_token;
   try {
     const result = await user.save();
@@ -55,11 +57,21 @@ const register = async (req, res, next) => {
 
     // creating access token
     access_token = JwtService.sign({ id: result._id, role: result.role });
+
+    // refresh token
+    refresh_token = JwtService.sign(
+      { id: result._id, role: result.role },
+      "1y",
+      REFRESH_SECRET
+    );
+
+    // database whitelist for refresh token
+    await RefreshToken.create({ token: refresh_token });
   } catch (error) {
     return next(error);
   }
 
-  res.send({ access_token });
+  res.send({ access_token , refresh_token});
   // boss "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMWEzMDYzY2VhMTE5OGJiMDQyYzgxNiIsInJvbGUiOiJjdXN0b21lciIsImlhdCI6MTY2MjY2MDcwNywiZXhwIjoxNjY1MjUyNzA3fQ.beBkY3oZH-6DPBCKhk46LNgWx11qgUyU_BA92SbhPIg"
 };
 
