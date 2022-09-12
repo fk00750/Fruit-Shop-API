@@ -6,7 +6,6 @@ const JwtService = require("../../utils/JwtService");
 const RefreshToken = require("../../models/refreshToken");
 const REFRESH_SECRET = process.env.REFRESH_SECRET;
 
-
 const login = async (req, res, next) => {
   // Login Schema
   const loginSchema = Joi.object({
