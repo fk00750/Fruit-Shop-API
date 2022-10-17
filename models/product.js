@@ -31,12 +31,9 @@ const productSchema = new mongoose.Schema(
     image: {
       type: String,
       required: true,
-      get: (image) => {
-        return `${APP_URL}/${image}`;
-      },
     },
   },
-  { timestamps: true, toJSON: { getters: true }, id: false }
+  { timestamps: true}
 );
 
 module.exports = mongoose.model("product", productSchema);
