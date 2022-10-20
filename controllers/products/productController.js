@@ -109,12 +109,6 @@ const create_product = async (req, res, next) => {
       return next(error);
     }
 
-    // cloudinary.v2.uploader.upload(filePath, async (err, result) => {
-    //   if (result.secure_url) {
-    //   } else {
-    //     return next(error);
-    //   }
-    // }); 
 
     let { name, variety, location, rating, price, nutrition_facts } = req.body;
 
