@@ -10,11 +10,18 @@ const auth = require("../middlewares/auth");
 const {
   getAll_products,
   get_product,
+  get_CartProduct,
   create_product,
   update_product,
   delete_product,
 } = require("../controllers/products/productController");
 const admin = require("../middlewares/admin");
+
+// geoJSON
+const {
+  get_fruitFarm,
+  create_fruitFarm,
+} = require("../controllers/geoJson/geoJsonController");
 
 const Router = express.Router();
 
@@ -41,7 +48,14 @@ Router.route("/product")
   .post([auth, admin], create_product);
 Router.route("/product/:id")
   .get(get_product)
-  .patch([auth, admin],update_product)
-  .delete([auth, admin],delete_product);
+  .patch([auth, admin], update_product)
+  .delete([auth, admin], delete_product);
+
+Router.route("/product/cart-items").post(get_CartProduct);
+
+// geoJson Route
+Router.route("/fruitfarm").get(get_fruitFarm);
+
+Router.route("/fruitfarm").post(create_fruitFarm);
 
 module.exports = Router;

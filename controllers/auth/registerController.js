@@ -21,6 +21,7 @@ const register = async (req, res, next) => {
   const { error } = registerSchema.validate(req.body);
 
   if (error) {
+    console.log(error)
     return next(error);
   }
 
@@ -53,7 +54,6 @@ const register = async (req, res, next) => {
   let access_token;
   try {
     const result = await user.save();
-    console.log(result);
 
     // creating access token
     access_token = JwtService.sign({ id: result._id, role: result.role });

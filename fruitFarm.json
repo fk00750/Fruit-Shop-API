@@ -1,0 +1,161 @@
+[
+  {
+    "type": "Farm",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [74.7719, 34.2165]
+    },
+    "properties": {
+      "name": "Apple",
+      "variety": "Ambri kashmiri apple",
+      "address": "Nawabagh Ganderbal",
+      "city": "Ganderbal",
+      "state": "Kashmir",
+      "country": "India"
+    }
+  },
+  {
+    "type": "Farm",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [79.0882, 21.1458]
+    },
+    "properties": {
+      "name": "Orange",
+      "variety": "Nagpur orange",
+      "phone": "2022347336",
+      "address": "Santra Market, Bajaria, Nagpur",
+      "city": "Nagpur",
+      "state": "Maharashtra",
+      "country": "India"
+    }
+  },
+  {
+    "type": "Farm",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [76.6394, 12.2958]
+    },
+    "properties": {
+      "name": "Banana",
+      "variety": "Nanjangud rasabalehannu",
+      "phone": "2022347336",
+      "address": "Devaraja Mohalla, Shivarampet, Mysuru",
+      "city": "Mysore",
+      "state": "Karnataka",
+      "country": "India"
+    }
+  },
+  {
+    "type": "Farm",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [81.8463, 25.4358]
+    },
+    "properties": {
+      "name": "Guava",
+      "variety": "Allahabadi surkha guava",
+      "phone": "2022347336",
+      "address": "Master Zahurul Hasan Rd, Old Katra, Prayagraj",
+      "city": "Allahabad",
+      "state": "Uttar Pradesh",
+      "country": "India"
+    }
+  },
+  {
+    "type": "Farm",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [76.6359, 9.947]
+    },
+    "properties": {
+      "name": "Pineapple",
+      "variety": "Vazhakulam pineapple",
+      "phone": "2022347336",
+      "address": "Vazhakulam",
+      "city": "Vazhakulam",
+      "state": "Kerala",
+      "country": "India"
+    }
+  },
+  {
+    "type": "Farm",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [85.391, 26.1197]
+    },
+    "properties": {
+      "name": "Litchi",
+      "variety": "Shahi litchi",
+      "phone": "2022347336",
+      "address": "Shekhpur dhab, Muzaffarpur",
+      "city": "Muzaffarpur",
+      "state": "Bihar",
+      "country": "India"
+    }
+  },
+  {
+    "type": "Farm",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [75.8069, 12.3375]
+    },
+    "properties": {
+      "name": "Orange",
+      "variety": "Coorg orange",
+      "phone": "2022347336",
+      "address": "1st Perumbadi, Virajpet",
+      "city": "kodagu",
+      "state": "karnataka",
+      "country": "India"
+    }
+  },
+  {
+    "type": "Farm",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [70.5503, 21.5179]
+    },
+    "properties": {
+      "name": "Mango",
+      "variety": "Gir kesar",
+      "phone": "2022347336",
+      "address": "Rajkot Road Majewadi, Darvaja, Junagadh",
+      "city": "Junagadh",
+      "state": "Gujrat",
+      "country": "India"
+    }
+  },
+  {
+    "type": "Farm",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [73.7898, 19.9975]
+    },
+    "properties": {
+      "name": "Grape",
+      "variety": "NAshik Grape",
+      "phone": "2022347336",
+      "address": "Jalalpur, Nashik",
+      "city": "Nashik",
+      "state": "Maharashtra",
+      "country": "India"
+    }
+  },
+  {
+    "type": "Farm",
+    "geometry": {
+      "type": "Point",
+      "coordinates": [92.7926, 26.6528]
+    },
+    "properties": {
+      "name": "Litchi",
+      "variety": "Tezpur litchi",
+      "phone": "2022347336",
+      "address": "nepalipatty licchi bagaan road,Tezpur",
+      "city": "Tezpur",
+      "state": "Assam",
+      "country": "India"
+    }
+  }
+]

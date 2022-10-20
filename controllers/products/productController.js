@@ -1,3 +1,4 @@
+require("dotenv").config();
 const Product = require("../../models/product");
 const Joi = require("joi");
 const multer = require("multer");
@@ -5,6 +6,15 @@ const path = require("path");
 const CustomErrorHandler = require("../../utils/CustomErrorHandler");
 const fs = require("fs");
 const APIFeatures = require("../../utils/API_Features");
+// const cloudinary = require("../../cloud/cloudinary");
+
+const cloudinary = require("cloudinary");
+
+cloudinary.config({
+  cloud_name: process.env.IMAGE_CLOUD_NAME,
+  api_key: process.env.IMAGE_CLOUD_API_KEY,
+  api_secret: process.env.IMAGE_CLOUD_API_SECRET,
+});
 
 const getAll_products = async (req, res, next) => {
   let documents;
@@ -17,7 +27,7 @@ const getAll_products = async (req, res, next) => {
 
     documents = await features.query;
   } catch (error) {
-    return next(CustomErrorHandler.serverError(err.message));
+    return next(CustomErrorHandler.serverError(error.message));
   }
 
   res.send(documents);
@@ -32,6 +42,19 @@ const get_product = async (req, res, next) => {
   }
 
   res.send(document);
+};
+
+const get_CartProduct = async (req, res, next) => {
+  let documents;
+  try {
+    documents = await Product.find({ _id: { $in: req.body.ids } }).select(
+      "-updatedAt -__v"
+    );
+  } catch (error) {
+    return next(CustomErrorHandler.serverError(err.message));
+  }
+
+  res.json(documents);
 };
 
 /////////////////////////////////////////////////////
@@ -61,13 +84,16 @@ const create_product = async (req, res, next) => {
     // file path
     const filePath = req.file.path;
 
+    if (!filePath) return;
+
     // validation by Joi
     const ProductSchema = Joi.object({
       name: Joi.string().required(),
+      variety: Joi.string().required(),
       location: Joi.string().required(),
-      cultivar: Joi.string().required(),
       rating: Joi.number().required(),
       price: Joi.number().required(),
+      nutrition_facts: Joi.any(),
     });
 
     const { error } = ProductSchema.validate(req.body);
@@ -83,23 +109,34 @@ const create_product = async (req, res, next) => {
       return next(error);
     }
 
-    const { name, location, cultivar, rating, price } = req.body;
+    // cloudinary.v2.uploader.upload(filePath, async (err, result) => {
+    //   if (result.secure_url) {
+    //   } else {
+    //     return next(error);
+    //   }
+    // }); 
+
+    let { name, variety, location, rating, price, nutrition_facts } = req.body;
+
+    nutrition_facts = JSON.parse(nutrition_facts);
+
 
     let document;
     try {
       document = await Product.create({
         name,
+        variety,
         location,
-        cultivar,
         rating,
         price,
+        nutrition_facts,
         image: filePath,
       });
+
+      res.status(201).json(document);
     } catch (error) {
       return next(error);
     }
-
-    res.status(201).json(document);
   });
 };
 
@@ -147,7 +184,14 @@ const update_product = async (req, res, next) => {
     try {
       document = await Product.findOneAndUpdate(
         { _id: req.params.id },
-        { name, location, cultivar, rating, price, ...(req.file && { image: filePath }) },
+        {
+          name,
+          location,
+          cultivar,
+          rating,
+          price,
+          ...(req.file && { image: filePath }),
+        },
         { new: true }
       );
     } catch (error) {
@@ -178,6 +222,7 @@ const delete_product = async (req, res, next) => {
 module.exports = {
   getAll_products,
   get_product,
+  get_CartProduct,
   create_product,
   update_product,
   delete_product,

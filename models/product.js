@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const APP_URL = process.env.APP_URL;
 
 const productSchema = new mongoose.Schema(
   {
@@ -8,14 +7,14 @@ const productSchema = new mongoose.Schema(
       required: [true, "Provide the fruit Name"], // must provide fruit name
       trim: true, // trim the white spaces from beginning and end
     },
+    variety: {
+      type: String, // type is string
+      required: [true, "Please Provide Fruit Popular Name"], // must provide origin name
+      trim: true, // trim the white spaces from beginning and end
+    },
     location: {
       type: String, // type is string
       required: [true, "Provide Place of location"], // must provide location
-      trim: true, // trim the white spaces from beginning and end
-    },
-    cultivar: {
-      type: String, // type is string
-      required: [true, "Provide Place of Origin"], // must provide origin name
       trim: true, // trim the white spaces from beginning and end
     },
     rating: {
@@ -28,12 +27,38 @@ const productSchema = new mongoose.Schema(
       required: [true, "Provide Price of Fruit"], // must provide price of fruit
       default: 250, // default rating
     },
+    nutrition_facts: [
+      {
+        amount: String,
+        calories: String,
+        total_Fat: String,
+        cholesterol: String,
+        sodium: String,
+        potassium: String,
+        total_Carbohydrate: String,
+        dietary_fiber: String,
+        sugar: String,
+        protein: String,
+        vitaminC: String,
+        calcium: String,
+        vitaminB6: String,
+        vitaminD: String,
+        magnesium: String,
+      },
+    ],
     image: {
       type: String,
+<<<<<<< HEAD
       required: true,
     },
   },
   { timestamps: true}
+=======
+      default:'uploads/1663080477949-359785859.jpg'
+    },
+  },
+  { timestamps: true, id: false }
+>>>>>>> 0c72d76 (Adding all the required features)
 );
 
 module.exports = mongoose.model("product", productSchema);

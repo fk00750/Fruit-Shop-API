@@ -12,6 +12,9 @@ const errorHandler = (err, req, res, next) => {
 
   // if the error is from registeration validiton from joi
   if (err instanceof ValidationError) {
+    console.log(
+      "Instance of ValidationError message from ErrorHandler.js file"
+    );
     statusCode = 422;
     let data = {
       errorMessage: err.message,
