@@ -48,17 +48,10 @@ const productSchema = new mongoose.Schema(
     ],
     image: {
       type: String,
-<<<<<<< HEAD
       required: true,
     },
   },
-  { timestamps: true}
-=======
-      default:'uploads/1663080477949-359785859.jpg'
-    },
-  },
-  { timestamps: true, id: false }
->>>>>>> 0c72d76 (Adding all the required features)
+  { timestamps: true }
 );
 
 module.exports = mongoose.model("product", productSchema);
