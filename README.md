@@ -18,7 +18,7 @@ The API is hosted here
 
 To see the Fruit Shop API working in action, click the image to visit the live website.
 
-<a href="https://fruity-fruit-shop.vercel.app/" target="_blank" rel="noopener noreferrer"><img src="https://user-images.githubusercontent.com/94318094/197400853-d5e6f3cc-f1d4-4da1-ac9c-6254c1a73c83.png" /></a>
+<a href="https://fruity-fruit-shop.vercel.app/" target="_blank"><img src="https://user-images.githubusercontent.com/94318094/197400853-d5e6f3cc-f1d4-4da1-ac9c-6254c1a73c83.png" /></a>
 
 ---
 
@@ -34,7 +34,7 @@ To see the Fruit Shop API working in action, click the image to visit the live w
 ## 🧰 Tools Used
 
 - [Visual Studio Code](https://code.visualstudio.com/) - Code Editor
-- [Thunder Client](https://www.thunderclient.com/)- API testing
+- [Thunder Client](https://www.thunderclient.com/) - API testing
 
 ---
 
@@ -85,3 +85,14 @@ This command will copy a full project to your local environment
 For complete documentation of Fruit Shop API you can checkout the following link
 
 - [API Documentation](https://fruity-fruit-shop.herokuapp.com/api-docs/)
+
+---
+
+## 📬 Have a question? Want to Chat? Ran into a problem?
+
+Please feel free to contact me via my email address ( fk7384329@gmail.com ) or you can also message me directly on [Twitter](https://twitter.com/Fk00750)
+
+## 🏷 License
+>You can check out the full license [here](https://github.com/fk00750/Fruit-Shop-API/blob/master/LICENSE)
+
+This project is licensed under the terms of the **MIT** license.
